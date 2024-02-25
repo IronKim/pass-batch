@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mysql: # service name (아무거나 입력 가능)
+    container_name: mysql_local # container name (아무거나 입력 가능)
+    image: mysql:8.0.30 # image name (버전 명시가능)
+    volumes: # 볼륨 설정 - 도커 컨테이너는 기본적으로 컨테이너가 삭제될 때 데이터가 함께 사라지게 되는데 이러한 생명 주기와 상관없이 데이터를 유지할 수 있도록 함
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/initdb.d:/docker-entrypoint-initdb.d # 컨테이너가 시작되면 이 폴더내에 있는 sh,sql 파일을 실행 (주의 : 파일명 순서대로 실행됨)
+    ports: # 포트 설정
+      - "3306:3306"
+    #restart: always # 컨테이너가 종료되면 자동으로 재시작
+    environment:
+      - MYSQL_DATABASE=pass_local
+      - MYSQL_USER=pass_local_user
+      - MYSQL_PASSWORD=passlocal123
+      - MYSQL_ROOT_PASSWORD=passlocal123
+      - TZ=Asia/Seoul
