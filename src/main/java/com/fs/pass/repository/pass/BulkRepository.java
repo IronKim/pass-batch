@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface BulkRepository extends JpaRepository<BulkPassEntity, Integer> {
     // WHERE status = :status AND startedAt > :startedAt
-    List<BulkPassEntity> findbyStatusAndStartedAtGreaterThan(BulkPassStatus status, LocalDateTime startedAt);
+    List<BulkPassEntity> findByStatusAndStartedAtGreaterThan(BulkPassStatus status, LocalDateTime startedAt);
 }

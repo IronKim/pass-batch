@@ -67,7 +67,7 @@ class AddPassesTaskletTest {
         userGroupMappingEntity.setUserId(userId);
 
         // when
-        when(bulkRepository.findbyStatusAndStartedAtGreaterThan(eq(BulkPassStatus.READY), any())).thenReturn(List.of(bulkPassEntity));
+        when(bulkRepository.findByStatusAndStartedAtGreaterThan(eq(BulkPassStatus.READY), any())).thenReturn(List.of(bulkPassEntity));
         when(userGroupMappingRepository.findByUserGroupId(eq("GROUP"))).thenReturn(List.of(userGroupMappingEntity));
 
         RepeatStatus repeatStatus = addPassesTasklet.execute(stepContribution, chunkContext);
