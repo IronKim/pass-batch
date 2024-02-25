@@ -11,3 +11,7 @@ spring:
   batch:
     jdbc:
       initialize-schema: always # 스키마를 초기화할지 여부를 결정합니다. always는 스키마를 초기화하고, never는 스키마를 초기화하지 않습니다. embedded는 내장 데이터베이스를 사용할 때만 사용할 수 있습니다.
+
+kakaotalk:
+  host: https://kapi.kakao.com
+  token: ACCESS_TOKEN
