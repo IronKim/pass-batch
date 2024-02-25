@@ -44,6 +44,8 @@ dependencies {
 	// junit5
 	testImplementation 'org.junit.jupiter:junit-jupiter-api'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	testImplementation 'org.apache.commons:commons-lang3:3.12.0'
 }
 
 tasks.named('test') {
