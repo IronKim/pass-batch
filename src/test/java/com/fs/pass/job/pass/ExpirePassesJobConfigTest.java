@@ -13,6 +13,9 @@ import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
@@ -27,6 +30,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBatchTest // Spring Batch 테스트를 위한 어노테이션
 @SpringBootTest
 @ActiveProfiles("test")
+@Import(ExpirePassesJobConfigTest.TestJpaConfig.class)
 @ContextConfiguration(classes = {ExpirePassesJobConfig.class, TestBatchConfig.class})
 class ExpirePassesJobConfigTest {
 
@@ -72,4 +76,7 @@ class ExpirePassesJobConfigTest {
         passRepository.saveAll(passEntityList);
 
     }
+    @EnableJpaAuditing
+    @TestConfiguration
+    static class TestJpaConfig { }
 }
