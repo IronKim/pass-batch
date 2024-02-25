@@ -1,7 +1,6 @@
 package com.fs.pass.repository.user;
 
 import com.fs.pass.repository.BaseEntity;
-import com.vladmihalcea.hibernate.type.json.JsonStringType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +16,6 @@ import java.util.Map;
 @Entity
 @Table(name = "user")
 // json의 타입을 정의합니다.
-@Convert(attributeName = "json", converter = JsonStringType.class) // json 형태로 저장되어 있는 문자열 데이터를 Map으로 매핑합니다.
 public class UserEntity extends BaseEntity {
     @Id
     private String userId;
@@ -28,6 +26,7 @@ public class UserEntity extends BaseEntity {
     private String phone;
 
     // json 형태로 저장되어 있는 문자열 데이터를 Map으로 매핑합니다.
+    @Column(columnDefinition = "json") // json 타입으로 컬럼을 정의합니다.
     @JdbcTypeCode(SqlTypes.JSON) // json 형태로 저장되어 있는 문자열 데이터를 Map으로 매핑합니다.
     private Map<String, Object> meta;
 
