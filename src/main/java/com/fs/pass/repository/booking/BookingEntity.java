@@ -1,6 +1,7 @@
 package com.fs.pass.repository.booking;
 
 import com.fs.pass.repository.BaseEntity;
+import com.fs.pass.repository.pass.PassEntity;
 import com.fs.pass.repository.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -33,5 +34,9 @@ public class BookingEntity extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", insertable = false, updatable = false)
     private UserEntity userEntity;
+
+    @ManyToOne(fetch = FetchType.LAZY) // 지연 로딩
+    @JoinColumn(name = "passSeq", insertable = false, updatable = false) // 외래키를 매핑합니다. (insertable : 삽입 가능 여부, updatable : 갱신 가능 여부)
+    private PassEntity passEntity;
 
 }
